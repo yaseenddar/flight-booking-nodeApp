@@ -7,7 +7,9 @@ const routes = require('./router/index');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use('/api',routes);
-app.listen(PORT,()=>{
+app.listen(PORT,async()=>{
     console.log('Server is running on port ',PORT)
-})
+  
+    })
+
 

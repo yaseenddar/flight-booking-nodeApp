@@ -8,7 +8,7 @@ async function createAirplane(data){
         return airplane;
     } catch (error) {
         
-        if(error.name == 'SequelizeValidationError'){
+        if(error.name == 'SequelizeValidationError' ||error.name ==  'SequelizeUniqueConstraintError'){
             const explanation = []
             error.errors.forEach(element => {
                 explanation.push(element.message);
@@ -16,6 +16,7 @@ async function createAirplane(data){
             
             throw new AppError(explanation,400);
         }
+        console.log(error)
         throw new AppError('Cannot create a new Airplane object',500);
        
     }
