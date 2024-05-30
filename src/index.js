@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended:true}))
 app.use('/api',routes);
 app.listen(PORT,async()=>{
     console.log('Server is running on port ',PORT)
-  
+
     })
 
 
