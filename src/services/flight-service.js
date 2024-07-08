@@ -66,8 +66,36 @@ async function getAllFlights(querry){
         throw new AppError("Cannot fetch data of all flights",500)
     }
 }
+
+async function getFlight(id){
+    try {
+        const flight = await flightRepository.get(id);
+        return flight;
+    } catch (error) {
+        if(error.statusCode == 404){
+            throw new AppError('The flight you looking for is not found',404);
+        }
+        throw new AppError('Cannot fetch the data of fligt',500);
+        
+    }
+}
+async function updateTheSeats(fligtId,seats,dec){
+    try {
+        const flight = await flightRepository.updateRemainingSeats(fligtId,seats,dec);
+        return flight;
+
+    } catch (error) {
+        if(error.statusCode == 404){
+            throw new AppError('The plane you are updating for is not found',404);
+        }
+        throw new AppError('Cannot fetch the data of flight',500);
+        
+    }
+}
 module.exports ={
     createFlight,
-    getAllFlights
+    getAllFlights,
+    getFlight,
+    updateTheSeats
 
 }

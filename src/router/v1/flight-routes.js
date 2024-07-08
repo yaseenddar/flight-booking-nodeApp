@@ -10,4 +10,10 @@ router.post('/',FlightMiddleware.validateCreateRequest,FlightController.createFl
 router.get('/',FlightController.getAllFlights)
 
 
+//get the flight details from  of particular flight
+router.get('/:id',FlightController.getFlight)
+
+
+// route for incre or decre the seats in flight
+router.patch('/:id/seats',FlightController.updateTheSeats);
 module.exports = router;
